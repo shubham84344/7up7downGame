@@ -7,65 +7,68 @@
     font-family: system-ui, sans-serif;
     color: #fff;
     text-align: center;
-  
+
     h1 {
-      margin-bottom: 1rem;
+        margin-bottom: 1rem;
     }
-  
+
     &__dice {
-      display: flex;
-      gap: 2rem;
-      margin: 1rem 0;
-  
-      div {
-        font-size: 4rem;
-        background: #444;
-        padding: 1rem 2rem;
-        border-radius: 1rem;
-      }
-    }
-  
-    &__buttons {
-      display: flex;
-      gap: 1rem;
-      margin: 1rem 0;
-  
-      button {
-        padding: 0.6rem 1.2rem;
-        font-size: 1rem;
-        border: none;
-        background: #00c853;
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.2s;
-  
-        &:hover {
-          background: #009624;
-        }
-      }
-  
-      @media (max-width: 600px) {
-        flex-direction: column;
-        button {
-          width: 100%;
-          max-width: 200px;
-        }
-      }
-    }
-  
-    &__result {
-      font-size: 1.1rem;
-      margin-top: 1rem;
-    }
-  
-    @media (max-width: 600px) {
-      &__dice {
-        flex-direction: column;
+        display: flex;
+        gap: 2rem;
+        margin: 1rem 0;
+
         div {
-          font-size: 3rem;
+            font-size: 5rem; // bigger dice
+            background: #fff;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
-      }
     }
-  }
-  
+
+    &__buttons {
+        display: flex;
+        gap: 1rem;
+        margin: 1rem 0;
+
+        button {
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            border: none;
+            background: #00c853;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+
+            &:hover {
+                background: #009624;
+            }
+        }
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+
+            button {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    }
+
+    &__result {
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+        &__dice {
+            flex-direction: column;
+
+            div {
+                font-size: 3rem;
+            }
+        }
+    }
+}

@@ -14,10 +14,10 @@ function App() {
     setDice1(d1);
     setDice2(d2);
 
-    const actual = total < 7 ? 'down' : total === 7 ? '7' : 'up';
+    const actual = total < 7 ? 'Down' : total === 7 ? '7' : 'Up';
     const isCorrect = guess === actual;
 
-    setResult(`Your guess '${guess}' is ${isCorrect ? '✅ correct' : '❌ wrong'}`);
+    setResult(`Your guess ${guess} is ${isCorrect ? '✅ correct' : '❌ wrong'}`);
 
   };
 
@@ -25,13 +25,13 @@ function App() {
     <div className="dice-game">
       <h1>7 Up Down</h1>
       <div className="dice-game__dice">
-        <div>{dice1}</div>
-        <div>{dice2}</div>
+        <div>{String.fromCharCode(0x267F + dice1)}</div>
+        <div>{String.fromCharCode(0x267F + dice2)}</div>
       </div>
       <div className="dice-game__buttons">
-        <button onClick={() => handleGuess('down')}>7 Down</button>
+        <button onClick={() => handleGuess('Down')}>7 Down</button>
         <button onClick={() => handleGuess('7')}>7</button>
-        <button onClick={() => handleGuess('up')}>7 Up</button>
+        <button onClick={() => handleGuess('Up')}>7 Up</button>
       </div>
       {result && <p className="dice-game__result">{result}</p>}
     </div>
