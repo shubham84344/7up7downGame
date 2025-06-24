@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import './App.scss';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [dice1, setDice1] = useState(1);
+  const [dice2, setDice2] = useState(1);
+  const [result, setResult] = useState('');
+
+  const handleGuess = (guess) => {
+    const d1 = Math.ceil(Math.random() * 6);
+    const d2 = Math.ceil(Math.random() * 6);
+    const total = d1 + d2;
+
+    setDice1(d1);
+    setDice2(d2);
+
+    const actual = total < 7 ? 'down' : total === 7 ? '7' : 'up';
+    const isCorrect = guess === actual;
+
+    setResult(`Your guess '${guess}' is ${isCorrect ? '✅ correct' : '❌ wrong'}`);
+
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="dice-game">
+      <h1>7 Up Down</h1>
+      <div className="dice-game__dice">
+        <div>{dice1}</div>
+        <div>{dice2}</div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="dice-game__buttons">
+        <button onClick={() => handleGuess('down')}>7 Down</button>
+        <button onClick={() => handleGuess('7')}>7</button>
+        <button onClick={() => handleGuess('up')}>7 Up</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      {result && <p className="dice-game__result">{result}</p>}
+    </div>
+  );
 }
 
-export default App
+export default App;
